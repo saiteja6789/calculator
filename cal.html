@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="cal.css" rel="stylesheet">
+    <title>calculator</title>
+</head>
+
+<body>
+    <div class="outer">
+        <input type="text" id="result"><br>
+        <input type="button" value="%" onclick="dis('%')" />
+        <input type="button" value="^" onclick="dis('^')" />
+        <input type="button" value="C" onclick="clr()" />
+        <script>
+            var text = "";
+
+            function display() {
+                for (let i = 9; i >= 1; i--) {
+                    if (i % 3 === 0) {
+                        document.writeln('<br>');
+
+                    }
+                    document.writeln(`<input type="button" value=${i} onclick="dis(${i})">`)
+                }
+
+
+            }
+            display();
+        </script>
+        <script>
+            function dis(val) {
+                document.getElementById("result").value += val
+            }
+
+            function res() {
+                let x = document.getElementById("result").value
+                let y = eval(x)
+                document.getElementById("result").value = y
+            }
+
+            function clr() {
+                document.getElementById("result").value = ""
+            }
+        </script>
+        <br>
+        <input type="button" value="AC" onclick="clr()" />
+        <input type="button" value="0" onclick="dis('0')" />
+        <input type="button" value="." onclick="dis('.')" />
+
+        <div class="inner">
+            <input type="button" value="+" onclick="dis('+')" /><br>
+            <input type="button" value="-" onclick="dis('-')" /><br>
+            <input type="button" value="*" onclick="dis('*')" /><br>
+            <input type="button" value="/" onclick="dis('/')" /><br>
+            <input type="button" value="=" onclick="res()" /><br>
+
+        </div>
+    </div>
+</body>
+
+</html>
